@@ -5,7 +5,7 @@ from sys import argv
 import Pyro5.server
 import Pyro5.api
 
-VOTER_NAME = "VOTER"
+VOTER_NAME = "VOTER_123456789_987654321_RETOV"
 
 
 class VoterService(object):
@@ -48,11 +48,11 @@ class VoterService(object):
         for m in self.msgs:
             count = self.msgs.count(m)
             if count >= majority:
-                print(f"Voter final verdict: {m}, whereas it was received {count} times")
+                print(f"Voter final verdict: {m}, where it was received {count} times")
                 return m
             if highest[1] < count:
                 highest = (m, count)
-        print(f"Voter final verdict: {highest[0]} whereas it was received {highest[1]} times")
+        print(f"Voter final verdict: {highest[0]} where it was received {highest[1]} times")
         return highest[0]
 
 
