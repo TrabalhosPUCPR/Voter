@@ -54,7 +54,7 @@ class VoterService(object):
                 return m
             if highest[1] < count:
                 highest = (m, count)
-        print(f"Voter final verdict: {highest[0]} where it was received {highest[1]} times")
+        print(f"Voter final verdict: {highest[0]}, where it was received {highest[1]} times")
         self.msgs.clear()
         return highest[0]
 
