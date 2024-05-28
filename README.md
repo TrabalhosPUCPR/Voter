@@ -7,12 +7,9 @@ O voter aguarda por ve mensagens (ve é parâmetro do programa). Ao receber a pr
 Se to expira, contabiliza o número de mensagens recebidas vr (vr <= ve) e produz veredito com base na maioria de vr. A maioria agora é sobre as mensagens recebidas (vr) e não sobre as mensagens esperadas (ve): math.ceil((vr+1)/2).
 
 ### Implementação
-- Utilize a plataforma Pyro5Links para um site externo. para a sua implementação.
-
+- Utilize a plataforma Pyro5 para a sua implementação.
 - A saída do voter pode ser feita na tela.
-
 - As mensagens de entrada do voter chegam por invocação do método send(msg) na sua interface (via Pyro5).
-
 - Crie programa cliente que chame o método remoto send() para os seguintes casos:
   1. ve mensagens chegam → produz veredito com a maioria;
   2. vr < ve mensagens chegam → produz veredito com a maioria;
