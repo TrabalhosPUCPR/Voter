@@ -29,6 +29,7 @@ class VoterService(object):
         self.timeout_active = True
         signal.alarm(self.timeout_to)
 
+    @Pyro5.server.expose
     @Pyro5.server.oneway
     def send(self, msg):
         if not self.timeout_active:
@@ -39,6 +40,8 @@ class VoterService(object):
             print(f"{msgs_received} messages received! Voting...")
             self.cancel_timeout()
             self.vote(math.ceil((self.expect + 1) / 2))
+        else:
+            print(f"Message {msg} received")
 
     def vote(self, majority):
         highest = (None, 0)
@@ -54,7 +57,7 @@ class VoterService(object):
 
 
 if __name__ == '__main__':
-    if len(argv) < 2:
+    if len(argv) < 3:
         print("Invalid parameter")
         exit(-1)
     arg_to = int(argv[2])
