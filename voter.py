@@ -19,6 +19,7 @@ class VoterService(object):
     def handle_timeout(self):
         msg_received = len(self.msgs)
         print(f"Timed out with {msg_received} messages received, verdict will be inconclusive!")
+        self.cancel_timeout()
         self.vote(math.ceil((msg_received + 2) / 2))
 
     def cancel_timeout(self):
@@ -49,10 +50,12 @@ class VoterService(object):
             count = self.msgs.count(m)
             if count >= majority:
                 print(f"Voter final verdict: {m}, where it was received {count} times")
+                self.msgs.clear()
                 return m
             if highest[1] < count:
                 highest = (m, count)
         print(f"Voter final verdict: {highest[0]} where it was received {highest[1]} times")
+        self.msgs.clear()
         return highest[0]
 
 
