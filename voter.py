@@ -20,7 +20,7 @@ class VoterService(object):
         msg_received = len(self.msgs)
         print(f"Timed out with {msg_received} messages received, verdict will be inconclusive!")
         self.cancel_timeout()
-        self.vote(math.ceil((msg_received + 2) / 2))
+        self.vote(math.ceil((msg_received + 1) / 2))
 
     def cancel_timeout(self):
         signal.alarm(0)
